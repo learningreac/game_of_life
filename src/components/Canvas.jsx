@@ -1,28 +1,31 @@
 import React, { useEffect, useRef } from 'react'
-import { store } from '../store';
 
-const m = store.length;
-const n = store[0].length;
 
 
 const Canvas = (props) => {
   const canvasRef = useRef(null);
+  const { board} = props;
+ 
   //console.log('canvasRef', canvasRef)
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
-    console.log('window', window.innerWidth, window.innerHeight)
+   // console.log('window', window.innerWidth, window.innerHeight)
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.height = window.innerHeight * 0.9;
+
+   // console.log('board', board)
+    const m = board.length;
+    const n = board[0].length;
 
 
-    const draw = (ctx, store) => {
+    const draw = (ctx, board) => {
      
       for (let i = 0; i < m; i++) {
         for (let j = 0; j < n; j++) {
 
-          if (store[i][j] === 1) {
+          if (board[i][j] === 1) {
             ctx.fillStyle = 'yellow'
           } else {
             ctx.fillStyle = 'grey'
@@ -34,11 +37,11 @@ const Canvas = (props) => {
       }
     }
 
-    if (store) {
-      draw(ctx, store)
+    if (board) {
+      draw(ctx, board)
     }
 
-  }, [store])
+  }, [board])
 
   return (
     <canvas ref={canvasRef} {...props} />
