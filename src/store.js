@@ -8,6 +8,13 @@ export const store = [
     [0,0,0,0,0,0,0,0,0,0]
 ]
 
+// generate store
+export const generateStore = (m,n) => {
+    let store = new Array(m).fill(0)
+                            .map(item => new Array(n).fill(0))
+    return store;
+}
+
 
 // game of life logic
 export const gameOfLife = function(board) {
