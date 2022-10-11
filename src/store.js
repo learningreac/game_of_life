@@ -49,7 +49,7 @@ export const gameOfLife = function(board) {
     //         board[i][j] = result[i][j]
     //     }
     // }
-    console.log('result',board, result)
+   // console.log('result',board, result)
 
     return result;
  };

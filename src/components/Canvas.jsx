@@ -4,31 +4,25 @@ import React, { useEffect, useRef } from 'react'
 
 const Canvas = (props) => {
   const canvasRef = useRef(null);
-  const { board} = props;
- 
-  //console.log('canvasRef', canvasRef)
+  const { board, grid_size, rows, cols } = props;
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
-   // console.log('window', window.innerWidth, window.innerHeight)
+    // console.log('window', window.innerWidth, window.innerHeight)
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight * 0.9;
-    const grid_size = canvas.height /10;
-    const x = Math.floor(canvas.height / grid_size);
-    const y = Math.floor(canvas.width / grid_size);
+    canvas.height = window.innerHeight*0.9;
 
-   // console.log('board', board)
     const m = board.length;
     const n = board[0].length;
 
 
     const draw = (ctx, board) => {
-     
-      for (let i = 0; i < x; i++) {
-        for (let j = 0; j < y; j++) {
 
-          if (i<m && j<n && board[i][j] === 1) {
+      for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+
+          if (i < m && j < n && board[i][j] === 1) {
             ctx.fillStyle = 'yellow'
           } else {
             ctx.fillStyle = 'lightgrey'
