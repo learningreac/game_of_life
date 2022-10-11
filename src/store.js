@@ -1,17 +1,13 @@
-export const store = [
-    [0,1,0,0,0,0,0,0,0,0],
-    [0,0,1,0,0,0,0,0,0,0],
-    [1,1,1,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0]
-]
-
 // generate store
 export const generateStore = (m,n) => {
     let store = new Array(m).fill(0)
                             .map(item => new Array(n).fill(0))
+
+    for (let i=0; i<=4; i++) {
+        for (let j=0; j<=4; j++) {
+            store[i][j] = Math.round(Math.random())
+        }
+    }
     return store;
 }
 
