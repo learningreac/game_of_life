@@ -3,14 +3,11 @@ import { store } from '../store';
 
 const m = store.length;
 const n = store[0].length;
-console.log(m, n);
-
 
 
 const Canvas = (props) => {
   const canvasRef = useRef(null);
-
-  console.log('canvasRef', canvasRef)
+  //console.log('canvasRef', canvasRef)
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -19,27 +16,29 @@ const Canvas = (props) => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const draw = ctx => {
-      // ctx.fillRect(0, 0, 100, 100);
-      // ctx.strokeRect(0,100,100,100);
-      // ctx.strokeRect(100,0,100,100);
-      // ctx.fillRect(100,100,100,100)
 
-      for (let i = 0; i < 6; i++) {
-        for (let j = 0; j < 6; j++) {
-          if ((i+j)%2 === 0) {
-            ctx.fillStyle = 'black'
-          } else {
+    const draw = (ctx, store) => {
+     
+      for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+
+          if (store[i][j] === 1) {
             ctx.fillStyle = 'yellow'
+          } else {
+            ctx.fillStyle = 'grey'
           }
-          ctx.fillRect(j * 25, i * 25, 25, 25);
+
+          ctx.fillRect(j * 50, i * 50, 50, 50);
+          ctx.strokeRect(j * 50, i * 50, 50, 50);
         }
       }
     }
 
-    draw(ctx)
+    if (store) {
+      draw(ctx, store)
+    }
 
-  }, [])
+  }, [store])
 
   return (
     <canvas ref={canvasRef} {...props} />
