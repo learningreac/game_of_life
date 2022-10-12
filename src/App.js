@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './App.css';
 import Canvas from './components/Canvas';
 import FooterMenu from './components/FooterMenu';
-import { store, generateStore, gameOfLife } from './store';
+import { generateStore, gameOfLife } from './store';
 
 function App() {
   const width = window.innerWidth;
