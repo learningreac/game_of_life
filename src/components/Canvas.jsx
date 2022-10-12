@@ -9,20 +9,13 @@ const Canvas = (props) => {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
-    // console.log('window', window.innerWidth, window.innerHeight)
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight*0.9;
-
-    const m = board.length;
-    const n = board[0].length;
-
+    canvas.height = window.innerHeight * 0.9;
 
     const draw = (ctx, board) => {
-
       for (let i = 0; i < rows; i++) {
         for (let j = 0; j < cols; j++) {
-
-          if (i < m && j < n && board[i][j] === 1) {
+          if (board[i][j] === 1) {
             ctx.fillStyle = 'yellow'
           } else {
             ctx.fillStyle = 'lightgrey'
