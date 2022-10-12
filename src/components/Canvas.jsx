@@ -27,9 +27,20 @@ const Canvas = (props) => {
       }
     }
 
-    if (board && canvas) {
-      draw(ctx, board)
-    }
+    const render = () => {
+      window.requestAnimationFrame(render);
+      // clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (board && canvas) {
+        draw(ctx, board)
+      }
+    };
+
+    render();
+
+    // if (board && canvas) {
+    //   draw(ctx, board)
+    // }
 
   }, [board])
 
