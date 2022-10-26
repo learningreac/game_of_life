@@ -18,7 +18,7 @@ function App() {
   const g_store = generateStore(rows, cols) ;
   const [board, setBoard] = useState(g_store);
 
-  
+
   const canvasContainerRef = useRef(null);
   useEffect(() => {
     const canContainer = canvasContainerRef.current;
@@ -27,7 +27,8 @@ function App() {
     let size = Math.min(canContainer.clientWidth, canContainer.clientHeight) / 10;
     setGridSize(size);
     let c = Math.floor(canContainer.clientWidth / size);
-    let r = Math.floor(canContainer.clientHeight / size)
+    let r = Math.floor(canContainer.clientHeight / size);
+    // console.log('diff', canContainer.clientWidth, c*size);
     setCols(c)
     setRows(r)
     const g_store = generateStore(r, c) ;

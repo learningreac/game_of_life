@@ -5,6 +5,8 @@ import React, { useEffect, useRef } from 'react'
 const Canvas = (props) => {
   const canvasRef = useRef(null);
   const { board, grid_size, rows, cols, width, height } = props;
+  const offset = (width - cols*grid_size)/2;
+  console.log(offset);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -21,8 +23,8 @@ const Canvas = (props) => {
             ctx.fillStyle = 'lightgrey'
           }
 
-          ctx.fillRect(j * grid_size, i * grid_size, grid_size, grid_size);
-          ctx.strokeRect(j * grid_size, i * grid_size, grid_size, grid_size);
+          ctx.fillRect(offset + j * grid_size, i * grid_size, grid_size, grid_size);
+          ctx.strokeRect(offset + j * grid_size, i * grid_size, grid_size, grid_size);
         }
       }
     }
@@ -37,10 +39,6 @@ const Canvas = (props) => {
     };
 
     render();
-
-    // if (board && canvas) {
-    //   draw(ctx, board)
-    // }
 
   }, [board])
 
