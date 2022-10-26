@@ -24,7 +24,7 @@ function App() {
     const canContainer = canvasContainerRef.current;
     setWidth(canContainer.clientWidth);
     setHeight(canContainer.clientHeight);
-    let size = Math.min(canContainer.clientWidth, canContainer.clientHeight) / 10;
+    let size = Math.min(canContainer.clientWidth, canContainer.clientHeight) / 15;
     setGridSize(size);
     let c = Math.floor(canContainer.clientWidth / size);
     let r = Math.floor(canContainer.clientHeight / size);

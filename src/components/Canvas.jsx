@@ -27,6 +27,11 @@ const Canvas = (props) => {
           ctx.strokeRect(offset + j * grid_size, i * grid_size, grid_size, grid_size);
         }
       }
+
+      // // outline
+      // ctx.beginPath();
+      // ctx.lineWidth = 10;
+      // ctx.strokeRect(offset, 0, cols*grid_size, height)
     }
 
     const render = () => {
