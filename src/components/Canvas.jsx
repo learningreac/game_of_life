@@ -4,13 +4,13 @@ import React, { useEffect, useRef } from 'react'
 
 const Canvas = (props) => {
   const canvasRef = useRef(null);
-  const { board, grid_size, rows, cols } = props;
+  const { board, grid_size, rows, cols, width, height } = props;
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight * 0.9;
+    canvas.width = width;
+    canvas.height = height;
 
     const draw = (ctx, board) => {
       for (let i = 0; i < rows; i++) {

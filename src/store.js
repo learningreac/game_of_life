@@ -1,5 +1,6 @@
 // generate store
 export const generateStore = (m,n) => {
+    if(m===0 || n === 0) return null;
     let store = new Array(m).fill(0)
                             .map(item => new Array(n).fill(0))
 
