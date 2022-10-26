@@ -6,7 +6,6 @@ const Canvas = (props) => {
   const canvasRef = useRef(null);
   const { board, grid_size, rows, cols, width, height } = props;
   const offset = (width - cols*grid_size)/2;
-  console.log(offset);
 
   useEffect(() => {
     const canvas = canvasRef.current;
