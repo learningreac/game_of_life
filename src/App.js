@@ -14,7 +14,8 @@ function App() {
   // console.log(width, height, grid_size, rows, cols);
 
   const g_store = generateStore(rows, cols);
-  const [board, setBoard] = useState(g_store)
+  const [board, setBoard] = useState(g_store);
+  const [start, setStart] = useState(false);
 
   const handleNextClick = () => {
     let newBoard = gameOfLife(board);
@@ -23,13 +24,29 @@ function App() {
 
   const handleGenerateClick = () => {
     let g_board = generateStore(rows, cols);
-    setBoard(g_board) 
+    setBoard(g_board)
+  }
+
+  const handleStartClick = () => {
+    setStart(!start);
+    console.log(start);
+    // while (start) {
+    //   handleNextClick();
+    //   console.log(board)
+    // }
   }
 
   return (
     <div className="App">
-      <Canvas board={board} grid_size={grid_size} rows={rows} cols={cols} />
-      <FooterMenu handleNextClick={handleNextClick} handleGenerateClick={handleGenerateClick}/>
+      <header>
+        <strong>Game of Life</strong>
+      </header>
+      <div id='main'>
+        {/* <Canvas board={board} grid_size={grid_size} rows={rows} cols={cols} /> */}
+      </div>
+      <div id='footer'>
+        <FooterMenu handleNextClick={handleNextClick} handleGenerateClick={handleGenerateClick} handleStartClick={handleStartClick} />
+      </div>
     </div>
   );
 }
