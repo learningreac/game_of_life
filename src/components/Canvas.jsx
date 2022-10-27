@@ -14,15 +14,16 @@ const Canvas = (props) => {
   useEffect(() => {
     if (isStart === true && local_board.current!==null) {
       const timerID = setInterval(() => {
-        console.log('Timeout called!');
+       // console.log('Timeout called!');
         let cur = gameOfLife(local_board.current);
         local_board.current = cur;
-      //  console.log('new', local_board.current)
+       console.log('new', local_board.current)
       }, 500);
       return () => clearInterval(timerID);
     } 
     // // suppose only be called when isStart is false
-    setBoard(local_board.current)
+    setBoard(local_board.current);
+    console.log(local_board.current)
   }, [isStart]);
 
   useEffect(() => {
