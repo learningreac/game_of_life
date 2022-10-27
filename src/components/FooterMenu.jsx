@@ -26,16 +26,16 @@ const PlayBtn = ({ isStart, handleStartClick }) => {
 }
 
 
-const FooterMenu = ({ isStart, handleNextClick, handleRestartClick, handleStartClick }) => {
+const FooterMenu = ({ isStart, handleNextClick, handleResetClick, handleStartClick }) => {
 
 
   return (
     <div id='footer_container'>
       <button type="button" style={{ display: 'block' }}
         className="btn btn-primary "
-        onClick={handleRestartClick}
+        onClick={handleResetClick}
       >
-        <span>Restart</span>
+        <span>Reset</span>
       </button>
 
       <PlayBtn isStart={isStart} handleStartClick={handleStartClick} />

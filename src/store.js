@@ -46,14 +46,6 @@ export const gameOfLife = function(board) {
            //  console.log(i, j, live, result[i][j])
         }
     }
- 
-  
-    // for (let i = 0; i< m; i++) {
-    //     for (let j=0; j<n;j++) {
-    //         board[i][j] = result[i][j]
-    //     }
-    // }
-   // console.log('result',board, result)
 
     return result;
  };

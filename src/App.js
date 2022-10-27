@@ -43,7 +43,7 @@ function App() {
     console.log(stepCount)
   }
 
-  const handleRestartClick = () => {
+  const handleResetClick = () => {
     let g_board = generateStore(rows, cols);
     setBoard(g_board);
     setSetpCount(0);
@@ -53,9 +53,7 @@ function App() {
   const handleStartClick = () => {
     setIsStart(!isStart);
     console.log(isStart);
-    // while (isStart === false) {   //  that means the start btn just got clicked, not yet render to useState
-      handleNextClick();
-    // }
+    // do not call setState in loop
   }
 
   return (
@@ -64,10 +62,10 @@ function App() {
         <strong>Game of Life</strong>
       </header>
       <div id='main' ref={canvasContainerRef}>
-        <Canvas board={board} grid_size={grid_size} rows={rows} cols={cols} width={width} height={height}/>
+        <Canvas isStart={isStart} setBoard={setBoard} board={board} grid_size={grid_size} rows={rows} cols={cols} width={width} height={height}/>
       </div>
       <div id='footer'>
-        <FooterMenu isStart={isStart} handleNextClick={handleNextClick} handleRestartClick={handleRestartClick} handleStartClick={handleStartClick} />
+        <FooterMenu isStart={isStart} handleNextClick={handleNextClick} handleResetClick={handleResetClick} handleStartClick={handleStartClick} />
       </div>
     </div>
   );

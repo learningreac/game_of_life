@@ -1,17 +1,38 @@
 import React, { useEffect, useRef } from 'react'
-
+import { gameOfLife } from '../store';
 
 
 const Canvas = (props) => {
   const canvasRef = useRef(null);
-  const { board, grid_size, rows, cols, width, height } = props;
-  const offset = (width - cols*grid_size)/2;
+  const { isStart, setBoard, board, grid_size, rows, cols, width, height } = props;
+  const props2Dom = { board, grid_size, rows, cols, width, height };
+  const offset = (width - cols * grid_size) / 2;
+
+  let local_board = useRef(board); // local board update render by canvas
+ 
 
   useEffect(() => {
+    if (isStart === true && local_board.current!==null) {
+      const timerID = setInterval(() => {
+        console.log('Timeout called!');
+        let cur = gameOfLife(local_board.current);
+        local_board.current = cur;
+      //  console.log('new', local_board.current)
+      }, 500);
+      return () => clearInterval(timerID);
+    } 
+    // // suppose only be called when isStart is false
+    setBoard(local_board.current)
+  }, [isStart]);
+
+  useEffect(() => {
+    local_board.current = board;
+    //console.log('ref', local_board.current, board)
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     canvas.width = width;
     canvas.height = height;
+    let animationFrameId;
 
     const draw = (ctx, board) => {
       for (let i = 0; i < rows; i++) {
@@ -27,27 +48,30 @@ const Canvas = (props) => {
         }
       }
 
-      // // outline
-      // ctx.beginPath();
-      // ctx.lineWidth = 10;
-      // ctx.strokeRect(offset, 0, cols*grid_size, height)
     }
 
     const render = () => {
-      window.requestAnimationFrame(render);
+      animationFrameId = window.requestAnimationFrame(render);
       // clear canvas
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      if (board && canvas) {
-        draw(ctx, board)
+      //ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if(board && canvas) {
+          draw(ctx, local_board.current)
       }
+     
     };
 
     render();
 
-  }, [board])
+    return () => {
+      window.cancelAnimationFrame(animationFrameId);
+    }
+
+  }, [board, local_board.current])
+
+  // setBoard(local_board.current)
 
   return (
-    <canvas ref={canvasRef} {...props} />
+    <canvas ref={canvasRef} {...props2Dom} />
   )
 }
 
