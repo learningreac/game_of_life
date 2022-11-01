@@ -1,4 +1,4 @@
-![Demo CountPages alpha](https://media.giphy.com/media/27ppQUOxe7KlG/giphy.gif)
+![Demo CountPages alpha](https://github.com/learningreac/game_of_life/blob/master/Demo_GameOfLife.gif)
 - gif try out
 
 - raw
